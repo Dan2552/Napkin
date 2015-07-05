@@ -1,0 +1,16 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'Napkin_Example', :exclusive => true do
+  pod "Napkin", :path => "../"
+
+  pod 'Alamofire', git: "git@github.com:Alamofire/Alamofire.git", branch: "swift-2.0"
+  pod "Luncheon", git: "git@github.com:Dan2552/Luncheon.git"
+end
+
+target 'Napkin_Tests', :exclusive => true do
+  pod "Napkin", :path => "../"
+
+  pod 'Quick', '~> 0.4'
+  pod 'Nimble', '2.0.0-rc.1'
+end
