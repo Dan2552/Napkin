@@ -8,6 +8,7 @@
 
 import UIKit
 import XLForm
+import Luncheon
 
 class EventViewController: NapkinViewController {
     var event = Event()
@@ -31,7 +32,7 @@ class EventViewController: NapkinViewController {
         input("starts")
         input("ends")
         
-        input("repeatInterval", collection: [
+        input("repeatInterval", label: "Repeat", collection: [
             0: "Never",
             1: "Every Day",
             2: "Every Week",
@@ -70,6 +71,7 @@ enum InputType {
     case Text
 }
 
+//TODO: move this into another file
 class NapkinViewController: XLFormViewController {
     private var currentSection: XLFormSectionDescriptor?
     
@@ -96,19 +98,63 @@ class NapkinViewController: XLFormViewController {
         
     }
     
-    func subject() -> AnyObject? {
-        return nil
+    func subject() -> AnyObject {
+        return NSObject()
     }
     
     func setupFields() {
         
     }
     
-    func input(fieldName: String, collection: [Int: String]? = nil, type: InputType? = nil) {
-        print("input")
-        let row = XLFormRowDescriptor(tag: fieldName, rowType: XLFormRowDescriptorTypeText)
-        row.cellConfigAtConfigure["textField.placeholder"] = fieldName
-        row.required = true
+    func subjectClass() -> AnyObject.Type {
+        return object_getClass(subject()) as AnyObject.Type
+    }
+    
+    func input(fieldName: String, collection: [Int: String]? = nil, type: InputType? = nil, required: Bool = false, var label: String = "") {
+        if label.isEmpty {
+            label = fieldName.underscoreCase().humanize()
+        }
+        
+        var fieldType = ClassInspector.propertyTypes(subjectClass())[fieldName]
+        if fieldType == nil {
+            fieldType = PropertyType.Other
+        }
+        var rowType: String
+        switch fieldType! {
+        case .NSDate:
+            rowType = XLFormRowDescriptorTypeDateTimeInline
+        case .BOOL:
+            rowType = XLFormRowDescriptorTypeBooleanSwitch
+        default:
+            rowType = XLFormRowDescriptorTypeText
+        }
+        
+        
+        let row: XLFormRowDescriptor
+        if let c = collection {
+            rowType = XLFormRowDescriptorTypeSelectorPush
+            row = XLFormRowDescriptor(tag: fieldName, rowType: rowType)
+            var options = [XLFormOptionsObject]()
+            for (key, value) in c {
+                options.append(XLFormOptionsObject(value: key, displayText: value))
+            }
+            
+            
+            row.value = options.first
+            row.selectorTitle = label
+            
+            row.selectorOptions = options
+        } else {
+            row = XLFormRowDescriptor(tag: fieldName, rowType: rowType)
+        }
+        
+        if rowType == XLFormRowDescriptorTypeText {
+            row.cellConfigAtConfigure["textField.placeholder"] = label
+        } else {
+            row.title = label
+        }
+        
+        row.required = required
         
         currentSection?.addFormRow(row)
     }
