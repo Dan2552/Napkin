@@ -14,9 +14,9 @@ class Event: NSObject, Lunch {
     dynamic var allDay: Bool = false
     dynamic var starts: NSDate = NSDate(timeIntervalSinceNow: 60*60*24)
     dynamic var ends: NSDate = NSDate(timeIntervalSinceNow: 60*60*25)
-    dynamic var repeatInterval: String = "Never"
-    dynamic var alert: String = "None"
-    dynamic var showAs: String = "Busy"
+    dynamic var repeatInterval = 0
+    dynamic var alert = 0
+    dynamic var showAs = 0
     dynamic var URL: String = ""
     dynamic var notes: String = ""
     
