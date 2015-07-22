@@ -14,12 +14,10 @@ public class NapkinViewController: XLFormViewController {
     
     public required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        initializeForm()
     }
     
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        initializeForm()
     }
     
     private func initializeForm() {
@@ -32,7 +30,7 @@ public class NapkinViewController: XLFormViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initializeForm()
     }
     
     public func subject() -> Lunch? {
@@ -122,5 +120,25 @@ public class NapkinViewController: XLFormViewController {
     public func sectionSeparator() {
         currentSection = XLFormSectionDescriptor.formSection()
         form.addFormSection(currentSection)
+    }
+
+    public func setValuesToSubject() {
+        for section in form.formSections {
+            if !section.isMultivaluedSection() {
+                for row in section.formRows! {
+                    let r = row as! XLFormRowDescriptor
+                    if r.tag != nil {
+                        if r.value is XLFormOptionsObject {
+                            print("\(r.tag): \(r.value.formValue())")
+                            subject()?.assignAttribute(r.tag, withValue: r.value.formValue())
+                        } else {
+                            print("\(r.tag): \(r.value)")
+                            subject()?.assignAttribute(r.tag, withValue: r.value)
+                        }
+                        
+                    }
+                }
+            }
+        }
     }
 }

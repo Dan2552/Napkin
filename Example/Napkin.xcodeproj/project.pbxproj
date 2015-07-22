@@ -17,6 +17,7 @@
 		ABAB3ED31B497B5D00B80538 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB3ED21B497B5D00B80538 /* Event.swift */; };
 		ABAB3ED71B499C6A00B80538 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB3ED61B499C6A00B80538 /* EventTableViewController.swift */; };
 		ABAB3ED91B49A0DF00B80538 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB3ED81B49A0DF00B80538 /* EventViewController.swift */; };
+		ABAF89FA1B6044FB002B3252 /* SimpleArrayStoredModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAF89F91B6044FA002B3252 /* SimpleArrayStoredModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		ABAB3ED21B497B5D00B80538 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		ABAB3ED61B499C6A00B80538 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		ABAB3ED81B49A0DF00B80538 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		ABAF89F91B6044FA002B3252 /* SimpleArrayStoredModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleArrayStoredModel.swift; sourceTree = "<group>"; };
 		DF8F44D43506A48B37CFE09F /* Napkin.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Napkin.podspec; path = ../Napkin.podspec; sourceTree = "<group>"; };
 		F4D09957DC93D1F3C4174E35 /* Pods-Napkin_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napkin_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Napkin_Tests/Pods-Napkin_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 				ABAB3ED21B497B5D00B80538 /* Event.swift */,
 				ABAB3ED61B499C6A00B80538 /* EventTableViewController.swift */,
 				ABAB3ED81B49A0DF00B80538 /* EventViewController.swift */,
+				ABAF89F91B6044FA002B3252 /* SimpleArrayStoredModel.swift */,
 			);
 			name = "Example for Napkin";
 			path = Napkin;
@@ -365,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABAF89FA1B6044FB002B3252 /* SimpleArrayStoredModel.swift in Sources */,
 				ABAB3ED31B497B5D00B80538 /* Event.swift in Sources */,
 				ABAB3ED91B49A0DF00B80538 /* EventViewController.swift in Sources */,
 				ABAB3ED71B499C6A00B80538 /* EventTableViewController.swift in Sources */,

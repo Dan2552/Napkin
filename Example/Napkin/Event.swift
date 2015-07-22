@@ -8,7 +8,7 @@
 
 import Luncheon
 
-class Event: NSObject, Lunch {
+class Event: SimpleArrayStoredModel, Lunch {
     dynamic var title: String = ""
     dynamic var location: String = ""
     dynamic var allDay: Bool = false

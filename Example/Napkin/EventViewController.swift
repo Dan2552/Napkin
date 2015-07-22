@@ -16,6 +16,19 @@ class EventViewController: NapkinViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelPressed")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "savePressed")
+    }
+    
+    func cancelPressed() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    func savePressed() {
+        setValuesToSubject()
+        event.save()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func subject() -> Lunch {

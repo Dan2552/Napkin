@@ -14,6 +14,6 @@ end
 target 'Napkin_Tests', :exclusive => true do
   pod "Napkin", :path => "../"
 
-  pod 'Quick', '~> 0.4'
-  pod 'Nimble', '2.0.0-rc.1'
+  #pod 'Quick', '~> 0.4'
+  #pod 'Nimble', '2.0.0-rc.1'
 end
