@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
     </dependencies>
     <scenes>
-        <!--Event Table View Controller-->
+        <!--Events-->
         <scene sceneID="vfE-5Q-qBO">
             <objects>
                 <tableViewController id="fRK-ya-rzr" customClass="EventTableViewController" customModule="Napkin_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -44,7 +44,7 @@
                             <outlet property="delegate" destination="fRK-ya-rzr" id="piL-0L-z5B"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ZKy-da-fWG">
+                    <navigationItem key="navigationItem" title="Events" id="ZKy-da-fWG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ok1-bO-rNJ">
                             <connections>
                                 <segue destination="ctM-mv-pzq" kind="presentation" id="ttT-zR-gEj"/>

@@ -30,7 +30,34 @@ public class NapkinViewController: XLFormViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        if useDefaultModalButtons() && isModal {
+            title = "Add \(subject()!.remote.subjectClassNameUnderscore().titleize())"
+            
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelWasTapped")
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "preSaveWasTapped")
+        }
         initializeForm()
+    }
+    
+    public func useDefaultModalButtons() -> Bool {
+        return true
+    }
+    
+    func preSaveWasTapped() {
+        setValuesToSubject()
+        saveWasTapped()
+    }
+    
+    public func saveWasTapped() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    public func cancelWasTapped() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    public func prepareForDismiss(saveWasTapped: Bool) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     public func subject() -> Lunch? {
