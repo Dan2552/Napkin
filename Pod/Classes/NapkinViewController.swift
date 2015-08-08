@@ -146,7 +146,7 @@ public class NapkinViewController: XLFormViewController {
     
     public func sectionSeparator() {
         currentSection = XLFormSectionDescriptor.formSection()
-        form.addFormSection(currentSection)
+        form.addFormSection(currentSection!)
     }
 
     public func setValuesToSubject() {
@@ -156,11 +156,11 @@ public class NapkinViewController: XLFormViewController {
                     let r = row as! XLFormRowDescriptor
                     if r.tag != nil {
                         if r.value is XLFormOptionsObject {
-                            print("\(r.tag): \(r.value.formValue())")
-                            subject()?.assignAttribute(r.tag, withValue: r.value.formValue())
+//                            print("\(r.tag): \(r.value.formValue())")
+                            subject()?.assignAttribute(r.tag!, withValue: r.value!.formValue())
                         } else {
                             print("\(r.tag): \(r.value)")
-                            subject()?.assignAttribute(r.tag, withValue: r.value)
+                            subject()?.assignAttribute(r.tag!, withValue: r.value!)
                         }
                         
                     }
