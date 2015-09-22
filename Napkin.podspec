@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Napkin"
-  s.version          = "0.1.0"
+  s.version          = "0.2.0"
   s.summary          = "A short description of Napkin."
   s.description      = <<-DESC
                        An optional longer description of Napkin
@@ -31,10 +31,7 @@ Pod::Spec.new do |s|
     'Napkin' => ['Pod/Assets/*.png']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
-  s.dependency 'Luncheon', '~> 0.1.0'
+  s.dependency 'Luncheon', '~> 0.2.0'
   s.dependency 'XLForm', '~> 3.0.0'
-  s.dependency 'Placemat', '~> 0.1.0'
+  s.dependency 'Placemat', '~> 0.2.0'
 end

@@ -3,12 +3,6 @@ use_frameworks!
 
 target 'Napkin_Example', :exclusive => true do
   pod "Napkin", :path => "../"
-
-  pod 'Alamofire', git: "git@github.com:Alamofire/Alamofire.git", branch: "swift-2.0"
-  pod "Luncheon", git: "git@github.com:Dan2552/Luncheon.git", branch: "master"
-  pod "Placemat", git: "git@github.com:Dan2552/Placemat.git", branch: "master"
-  #pod 'Luncheon', path: "/Users/dan2552/projects/Luncheon"
-  #pod 'Placemat', path: "/Users/dan2552/projects/Placemat"
 end
 
 target 'Napkin_Tests', :exclusive => true do
