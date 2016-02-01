@@ -94,6 +94,8 @@ public class NapkinViewController: XLFormViewController {
                 rowType = XLFormRowDescriptorTypeDateTimeInline
             case .BOOL:
                 rowType = XLFormRowDescriptorTypeBooleanSwitch
+            case .Integer:
+                rowType = XLFormRowDescriptorTypePhone
             default:
                 rowType = XLFormRowDescriptorTypeText
             }
@@ -148,12 +150,27 @@ public class NapkinViewController: XLFormViewController {
         currentSection = XLFormSectionDescriptor.formSection()
         form.addFormSection(currentSection!)
     }
+    
+    public func button(title: String, action: ()->()) {
+        let button = XLFormRowDescriptor(tag: title, rowType: XLFormRowDescriptorTypeButton)
+        button.title = title
+        button.action.formBlock = { descriptor in
+            action()
+        }
+        currentSection?.addFormRow(button)
+    }
 
     public func setValuesToSubject() {
         for section in form.formSections {
             if !section.isMultivaluedSection() {
                 for row in section.formRows! {
                     let r = row as! XLFormRowDescriptor
+                    
+                    // buttons obviously don't have a value
+                    if r.rowType == XLFormRowDescriptorTypeButton {
+                        continue
+                    }
+                    
                     if r.tag != nil {
                         if r.value is XLFormOptionsObject {
 //                            print("\(r.tag): \(r.value.formValue())")
