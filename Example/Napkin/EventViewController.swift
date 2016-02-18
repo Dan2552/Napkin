@@ -30,6 +30,7 @@ class EventViewController: NapkinViewController {
     
     override func setupFields() {
         input("title")
+        input("secret", type: .Password)
         input("location")
         
         sectionSeparator()
