@@ -10,6 +10,7 @@ import Luncheon
 
 class Event: SimpleArrayStoredModel, Lunch {
     dynamic var title: String = ""
+    dynamic var secret: String = ""
     dynamic var location: String = ""
     dynamic var allDay: Bool = false
     dynamic var starts: NSDate = NSDate(timeIntervalSinceNow: 60*60*24)
