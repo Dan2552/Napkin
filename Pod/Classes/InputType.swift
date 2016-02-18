@@ -10,4 +10,5 @@
 public enum InputType: String {
     case Text = "textView"
     case URL = "url"
+    case Password = "password"
 }
