@@ -1,11 +1,3 @@
-//
-//  NapkinViewController.swift
-//  Pods
-//
-//  Created by Daniel Green on 10/07/2015.
-//
-//
-
 import Luncheon
 import XLForm
 

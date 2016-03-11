@@ -1,11 +1,3 @@
-//
-//  SimpleArrayStoredModel.swift
-//  Napkin
-//
-//  Created by Daniel Green on 22/07/2015.
-//  Copyright © 2015 CocoaPods. All rights reserved.
-//
-
 import Foundation
 
 class SimpleArrayStoredModel: NSObject {
