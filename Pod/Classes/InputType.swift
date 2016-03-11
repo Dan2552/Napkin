@@ -1,6 +1,11 @@
-// Swift requires that these be literal, but they match up with XLFormRowDescriptorType
-public enum InputType: String {
-    case Text = "textView"
-    case URL = "url"
-    case Password = "password"
+public enum InputType {
+    case String
+    case Text
+    case URL
+    case Password
+    case DateInLine
+    case Switch
+    case Number
+    case Collection
+    case Email
 }

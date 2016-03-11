@@ -1,9 +1,9 @@
 import Luncheon
-import XLForm
+import Eureka
 
-public class NapkinViewController: XLFormViewController {
-    private var currentSection: XLFormSectionDescriptor?
-    
+public class NapkinViewController: FormViewController {
+    private var currentSection: Section?
+    private var collections = [String : [Int: String]]()
     public required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -13,9 +13,6 @@ public class NapkinViewController: XLFormViewController {
     }
     
     private func initializeForm() {
-        let form = XLFormDescriptor(title: "Add \(subject()!.remote.subjectClassNameUnderscore().titleize())")
-        self.form = form
-        
         sectionSeparator()
         setupFields()
     }
@@ -63,118 +60,145 @@ public class NapkinViewController: XLFormViewController {
     func subjectClass() -> AnyObject.Type {
         return object_getClass(subject()) as AnyObject.Type
     }
-    
-    public func input(fieldName: String, collection: [Int: String]? = nil, type: InputType? = nil, required: Bool = false, var label: String = "") {
+
+    private func propertyType(fieldName: String) -> PropertyType {
+        return ClassInspector.propertyTypes(subjectClass())[fieldName] ?? PropertyType.Other
+    }
+
+    public func input(fieldName: String, collection: [Int: String]? = nil, var type: InputType? = nil, var label: String = "") {
         let modelValue = subject()!.valueForKey(fieldName)
-        
+
+        // If the label wasn't given, we can infer from the actual model field name
         if label.isEmpty {
             label = fieldName.underscoreCase().titleize()
         }
-        
-        var fieldType = ClassInspector.propertyTypes(subjectClass())[fieldName]
-        if fieldType == nil {
-            fieldType = PropertyType.Other
-        }
-        
-        var rowType: String
-        
-        if type != nil {
-            rowType = type!.rawValue
-        } else {
-            switch fieldType! {
-            case .NSDate:
-                rowType = XLFormRowDescriptorTypeDateTimeInline
-            case .BOOL:
-                rowType = XLFormRowDescriptorTypeBooleanSwitch
-            case .Integer:
-                rowType = XLFormRowDescriptorTypePhone
-            default:
-                rowType = XLFormRowDescriptorTypeText
-            }
-        }
-        
-        let row: XLFormRowDescriptor
-        if let c = collection {
-            rowType = XLFormRowDescriptorTypeSelectorPush
-            row = XLFormRowDescriptor(tag: fieldName, rowType: rowType)
-            var options = [XLFormOptionsObject]()
-            
-            let sortedKeys = Array(c.keys).sort(<)
-            
-            for key in sortedKeys {
-                let option = XLFormOptionsObject(value: key, displayText: c[key])
-                if key == modelValue as! Int {
-                    row.value = option
+
+        // If the type hasn't been passed in, we can infer the type from the model itself
+        if type == nil {
+            let fieldType = propertyType(fieldName)
+            if collection != nil {
+                type = .Collection
+            } else {
+                switch fieldType {
+                case .NSDate:
+                    type = .DateInLine
+                case .BOOL:
+                    type = .Switch
+                case .Integer:
+                    type = .Number
+                default:
+                    type = .String
                 }
-                options.append(option)
             }
-            
-            
-            row.selectorTitle = label
-            row.selectorOptions = options
-            if modelValue == nil { row.value = options.first }
-            
-        } else {
-            row = XLFormRowDescriptor(tag: fieldName, rowType: rowType)
-            row.value = modelValue
         }
-        
-        if isRowTypeText(rowType) {
-            row.cellConfigAtConfigure["textField.placeholder"] = label
-        } else if rowType == XLFormRowDescriptorTypeTextView {
-            row.cellConfigAtConfigure["textView.placeholder"] = "Notes"
-        } else {
+
+        let row: BaseRow
+
+        switch type! {
+        case .Password:
+            let passwordRow = PasswordRow()
+            row = passwordRow
+
+            passwordRow.placeholder = label
+            if let value = modelValue as? String {
+                passwordRow.value = value
+            }
+        case .Collection:
+            let pushRow = PushRow<String>()
+            row = pushRow
+
+            if let collection = collection {
+                collections[fieldName] = collection
+
+                pushRow.options = collection.sort { $0.0 < $1.0 }.map { $1 }
+                if let modelValue = modelValue as? Int {
+                    pushRow.value = collection.filter { $0.0 == modelValue }.first?.1
+                }
+                pushRow.value = pushRow.value ?? collection.first?.1
+            }
+        case .Switch:
+            let switchRow = SwitchRow()
+            row = switchRow
+            if let value = modelValue as? Bool {
+                switchRow.value = value
+            }
+        case .DateInLine:
+            let dateInLineRow = DateTimeInlineRow()
+            row = dateInLineRow
+
+            if let value = modelValue as? NSDate {
+                dateInLineRow.value = value
+            }
+        case .URL:
+            let urlRow = URLRow()
+            row = urlRow
+
+            urlRow.placeholder = label
+
+            if let value = modelValue as? String {
+                urlRow.value = NSURL(string: value)
+            }
+        case .Text:
+            let textAreaRow = TextAreaRow()
+            row = textAreaRow
+
+            textAreaRow.placeholder = label
+
+            if let value = modelValue as? String {
+                textAreaRow.value = value
+            }
+        default:
+            let textRow = TextRow()
+            row = textRow
+
+            textRow.placeholder = label
+
+            if let value = modelValue as? String {
+                textRow.value = value
+            }
+        }
+
+        if !isStringAlike(type) {
             row.title = label
         }
-        
-        row.required = required
-        currentSection?.addFormRow(row)
+
+        row.tag = fieldName
+
+        currentSection?.append(row)
     }
-    
-    private func isRowTypeText(rowType: String) -> Bool {
-        return rowType == XLFormRowDescriptorTypeText
-            || rowType == XLFormRowDescriptorTypeURL
-            || rowType == XLFormRowDescriptorTypeEmail
-            || rowType == XLFormRowDescriptorTypePassword
+
+    private func isStringAlike(type: InputType?) -> Bool {
+        guard let type = type else { return false }
+
+        return type == .String
+            || type == .URL
+            || type == .Email
+            || type == .Password
+            || type == .Text
     }
-    
+
     public func sectionSeparator() {
-        currentSection = XLFormSectionDescriptor.formSection()
-        form.addFormSection(currentSection!)
+        currentSection = Section()
+        form +++= currentSection!
     }
     
     public func button(title: String, action: ()->()) {
-        let button = XLFormRowDescriptor(tag: title, rowType: XLFormRowDescriptorTypeButton)
+        let button = ButtonRow(title)
         button.title = title
-        button.action.formBlock = { descriptor in
-            action()
-        }
-        currentSection?.addFormRow(button)
+        button.onCellSelection { cell, row in action() }
+
+        currentSection?.append(button)
     }
 
     public func setValuesToSubject() {
-        for section in form.formSections {
-            if !section.isMultivaluedSection() {
-                for row in section.formRows! {
-                    let r = row as! XLFormRowDescriptor
-                    
-                    // buttons obviously don't have a value
-                    if r.rowType == XLFormRowDescriptorTypeButton {
-                        continue
-                    }
-                    
-                    if r.tag != nil {
-                        if r.value is XLFormOptionsObject {
-//                            print("\(r.tag): \(r.value.formValue())")
-                            subject()?.assignAttribute(r.tag!, withValue: r.value!.formValue())
-                        } else {
-                            print("\(r.tag): \(r.value)")
-                            subject()?.assignAttribute(r.tag!, withValue: r.value!)
-                        }
-                        
-                    }
-                }
+        for (fieldName, value) in form.values() {
+            guard var v = value as? AnyObject? else { continue }
+
+            if let collection = collections[fieldName] {
+                v = collection.filter { $1 == (v as! String) }.first?.0
             }
+
+            subject()?.assignAttribute(fieldName, withValue: v)
         }
     }
 }
