@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Napkin
-//
-//  Created by Daniel Green on 07/05/2015.
-//  Copyright (c) 2015 Daniel Green. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

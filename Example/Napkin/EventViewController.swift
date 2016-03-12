@@ -1,13 +1,4 @@
-//
-//  EventViewController.swift
-//  Napkin
-//
-//  Created by Daniel Green on 05/07/2015.
-//  Copyright © 2015 CocoaPods. All rights reserved.
-//
-
 import UIKit
-import XLForm
 import Luncheon
 import Napkin
 
