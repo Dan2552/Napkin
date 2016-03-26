@@ -85,7 +85,7 @@ public class NapkinViewController: FormViewController {
                 case .BOOL:
                     type = .Switch
                 case .Integer:
-                    type = .Number
+                    type = .Integer
                 default:
                     type = .String
                 }
@@ -146,6 +146,13 @@ public class NapkinViewController: FormViewController {
 
             if let value = modelValue as? String {
                 textAreaRow.value = value
+            }
+        case .Integer:
+            let numberRow = IntRow()
+            row = numberRow
+
+            if let value = modelValue as? Int {
+                numberRow.value = value
             }
         default:
             let textRow = TextRow()
