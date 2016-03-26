@@ -20,10 +20,10 @@ public class NapkinViewController: FormViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         if useDefaultModalButtons() && isModal {
-            title = "Add \(subject()!.remote.subjectClassNameUnderscore().titleize())"
+            title = "Add \(subject()!.dynamicType.className().titleize())"
             
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelWasTapped")
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "preSaveWasTapped")
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: #selector(cancelWasTapped))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(preSaveWasTapped))
         }
         initializeForm()
     }
