@@ -1,13 +1,13 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'Napkin_Example', :exclusive => true do
+target 'Napkin_Example' do
   pod "Napkin", :path => "../"
 
   pod "Luncheon", git: "https://github.com/Dan2552/Luncheon.git", branch: "master"
 end
 
-target 'Napkin_Tests', :exclusive => true do
+target 'Napkin_Tests' do
   pod "Napkin", :path => "../"
 
   pod 'Quick'

@@ -186,7 +186,7 @@ public class NapkinViewController: FormViewController {
 
     public func sectionSeparator() {
         currentSection = Section()
-        form +++= currentSection!
+        form +++ currentSection!
     }
     
     public func button(title: String, action: ()->()) {
