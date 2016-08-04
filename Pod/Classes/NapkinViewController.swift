@@ -20,12 +20,17 @@ public class NapkinViewController: FormViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         if useDefaultModalButtons() && isModal {
-            title = "Add \(subject()!.dynamicType.className().titleize())"
+            
+            title = "Add \(subjectClassName().titleize())"
             
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: #selector(cancelWasTapped))
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(preSaveWasTapped))
         }
         initializeForm()
+    }
+    
+    func subjectClassName() -> String {
+        return String(subjectClass()).componentsSeparatedByString(".").last!
     }
     
     public func useDefaultModalButtons() -> Bool {
@@ -205,7 +210,7 @@ public class NapkinViewController: FormViewController {
                 v = collection.filter { $1 == (v as! String) }.first?.0
             }
 
-            subject()?.assignAttribute(fieldName, withValue: v)
+            subject()?.local.assignAttribute(fieldName, withValue: v)
         }
     }
 }
