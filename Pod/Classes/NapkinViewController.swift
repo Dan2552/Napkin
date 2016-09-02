@@ -16,7 +16,7 @@ public class NapkinViewController: FormViewController {
         sectionSeparator()
         setupFields()
     }
-    
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         if useDefaultModalButtons() && isModal {
@@ -70,7 +70,11 @@ public class NapkinViewController: FormViewController {
         return ClassInspector.propertyTypes(subjectClass())[fieldName] ?? PropertyType.Other
     }
 
-    public func input(fieldName: String, collection: [Int: String]? = nil, var type: InputType? = nil, var label: String = "") {
+    public func input(fieldName: String,
+                      collection: [Int: String]? = nil,
+                      var type: InputType? = nil,
+                      var label: String = "",
+                      customAction: (()->())? = nil) {
         let modelValue = subject()!.valueForKey(fieldName)
 
         // If the label wasn't given, we can infer from the actual model field name
@@ -81,7 +85,7 @@ public class NapkinViewController: FormViewController {
         // If the type hasn't been passed in, we can infer the type from the model itself
         if type == nil {
             let fieldType = propertyType(fieldName)
-            if collection != nil {
+            if collection != nil || customAction != nil {
                 type = .Collection
             } else {
                 switch fieldType {
@@ -97,7 +101,7 @@ public class NapkinViewController: FormViewController {
             }
         }
 
-        let row: BaseRow
+        var row: BaseRow
 
         switch type! {
         case .Password:
@@ -111,8 +115,13 @@ public class NapkinViewController: FormViewController {
         case .Collection:
             let pushRow = PushRow<String>()
             row = pushRow
-
-            if let collection = collection {
+            
+            if let action = customAction {
+                let pushRow = CustomActionPushRow<String>()
+                row = pushRow
+                
+                pushRow.onCellSelection { _, _ in action() }
+            } else if let collection = collection {
                 collections[fieldName] = collection
 
                 pushRow.options = collection.sort { $0.0 < $1.0 }.map { $1 }
@@ -197,11 +206,10 @@ public class NapkinViewController: FormViewController {
     public func button(title: String, action: ()->()) {
         let button = ButtonRow(title)
         button.title = title
-        button.onCellSelection { cell, row in action() }
-
+        button.onCellSelection { _, _ in action() }
         currentSection?.append(button)
     }
-
+    
     public func setValuesToSubject() {
         for (fieldName, value) in form.values() {
             guard var v = value as? AnyObject? else { continue }
