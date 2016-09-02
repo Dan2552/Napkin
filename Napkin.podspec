@@ -9,14 +9,8 @@
 
 Pod::Spec.new do |s|
   s.name             = "Napkin"
-  s.version          = "0.2.1"
-  s.summary          = "A short description of Napkin."
-  s.description      = <<-DESC
-                       An optional longer description of Napkin
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
-                       DESC
+  s.version          = "0.3.0"
+  s.summary          = "Form builder that works seamlessly with Luncheon."
   s.homepage         = "https://github.com/Dan2552/Napkin"
   s.license          = 'MIT'
   s.author           = { "Daniel Green" => "dan2552@gmail.com" }
