@@ -202,8 +202,8 @@ public class NapkinViewController: FormViewController {
             || type == .Text
     }
 
-    public func sectionSeparator() {
-        currentSection = Section()
+    public func sectionSeparator(header: String = "", footer: String = "") {
+        currentSection = Section(header: header, footer: footer)
         form +++ currentSection!
     }
     
