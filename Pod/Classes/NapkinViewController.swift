@@ -74,8 +74,12 @@ public class NapkinViewController: FormViewController {
                       collection: [Int: String]? = nil,
                       var type: InputType? = nil,
                       var label: String = "",
+                      modelField: Bool = true,
                       customAction: (()->())? = nil) {
-        let modelValue = subject()!.valueForKey(fieldName)
+        var modelValue: AnyObject? = nil
+        if modelField {
+           modelValue = subject()!.valueForKey(fieldName)
+        }
 
         // If the label wasn't given, we can infer from the actual model field name
         if label.isEmpty {
