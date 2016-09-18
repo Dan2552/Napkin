@@ -93,12 +93,12 @@ public class NapkinViewController: FormViewController {
                 type = .Collection
             } else {
                 switch fieldType {
-                case .NSDate:
+                case .Date:
                     type = .DateInLine
-                case .BOOL:
+                case .Bool:
                     type = .Switch
-                case .Integer:
-                    type = .Integer
+                case .Int:
+                    type = .Int
                 default:
                     type = .String
                 }
@@ -165,7 +165,7 @@ public class NapkinViewController: FormViewController {
             if let value = modelValue as? String {
                 textAreaRow.value = value
             }
-        case .Integer:
+        case .Int:
             let numberRow = IntRow()
             row = numberRow
 

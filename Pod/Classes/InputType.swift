@@ -5,7 +5,7 @@ public enum InputType {
     case Password
     case DateInLine
     case Switch
-    case Integer
+    case Int
     case Collection
     case Email
 }
