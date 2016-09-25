@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C816D422014C2ADF599B1352C4977057F3C38C47",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E20C3583D46D1D5FF556AF88E02C4C2285D92E9D" : 0,
+    "5699D7BBC330A22B2BEB58D7C8A9E96C15976911" : 0,
+    "C816D422014C2ADF599B1352C4977057F3C38C47" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1C21ED05-1E16-4E3D-8024-2141826DD1E2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E20C3583D46D1D5FF556AF88E02C4C2285D92E9D" : "Placemat\/",
+    "5699D7BBC330A22B2BEB58D7C8A9E96C15976911" : "Luncheon\/",
+    "C816D422014C2ADF599B1352C4977057F3C38C47" : "Napkin\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Napkin",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/Napkin.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Dan2552\/Luncheon.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5699D7BBC330A22B2BEB58D7C8A9E96C15976911"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Dan2552\/Napkin.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C816D422014C2ADF599B1352C4977057F3C38C47"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Dan2552\/Placemat.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E20C3583D46D1D5FF556AF88E02C4C2285D92E9D"
+    }
+  ]
+}

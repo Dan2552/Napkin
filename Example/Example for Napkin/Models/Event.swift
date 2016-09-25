@@ -13,7 +13,9 @@ class Event: SimpleArrayStoredModel, Lunch {
     dynamic var notes = ""
     dynamic var secret = ""
     dynamic var number = 0
-
+    dynamic var author = "Somebody"
+    dynamic var updatedAt = NSDate()
+    
     required override init() {
         super.init()
     }

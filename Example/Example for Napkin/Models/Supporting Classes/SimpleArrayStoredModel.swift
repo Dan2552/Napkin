@@ -12,14 +12,15 @@ class SimpleArrayStoredModel: NSObject {
         return object_getClass(self) as! SimpleArrayStoredModel.Type
     }
     
+    /// A callback is used here to help demonstrate the usage with an asynronous save.
     func save(callback: ()->()) {
         for o in instanceClass().collection {
-            if o.uuid == self.uuid { return }
+            if o.uuid == self.uuid {
+                callback()
+                return
+            }
         }
         instanceClass().collection.append(self)
-        
-        // A callback is used here to help demonstrate the usage with an
-        // asynronous save.
         callback()
     }
 }

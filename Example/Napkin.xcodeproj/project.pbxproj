@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		371527291D98285D00891047 /* EventShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371527281D98285D00891047 /* EventShow.swift */; };
 		45EA2C5837B05BE2A148381C /* Pods_Napkin_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A1A68856745F19521684AA /* Pods_Napkin_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -15,8 +16,8 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		922019E9E682B60E1655E43D /* Pods_Napkin_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6087561998034E26F4F90F /* Pods_Napkin_Example.framework */; };
 		ABAB3ED31B497B5D00B80538 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB3ED21B497B5D00B80538 /* Event.swift */; };
-		ABAB3ED71B499C6A00B80538 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB3ED61B499C6A00B80538 /* EventTableViewController.swift */; };
-		ABAB3ED91B49A0DF00B80538 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB3ED81B49A0DF00B80538 /* EventViewController.swift */; };
+		ABAB3ED71B499C6A00B80538 /* EventIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB3ED61B499C6A00B80538 /* EventIndex.swift */; };
+		ABAB3ED91B49A0DF00B80538 /* EventEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAB3ED81B49A0DF00B80538 /* EventEdit.swift */; };
 		ABAF89FA1B6044FB002B3252 /* SimpleArrayStoredModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAF89F91B6044FA002B3252 /* SimpleArrayStoredModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,8 +34,9 @@
 /* Begin PBXFileReference section */
 		12A1A68856745F19521684AA /* Pods_Napkin_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Napkin_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C6087561998034E26F4F90F /* Pods_Napkin_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Napkin_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BD71B0926DB3B31C212BE1C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		2BD71B0926DB3B31C212BE1C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
 		2C8F322DBAF9C259B5A937FB /* Pods-Napkin_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napkin_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Napkin_Example/Pods-Napkin_Example.release.xcconfig"; sourceTree = "<group>"; };
+		371527281D98285D00891047 /* EventShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventShow.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* Napkin_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Napkin_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,13 +47,13 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		66F73A59C1BCF2C73403996B /* Pods-Napkin_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napkin_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Napkin_Example/Pods-Napkin_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		7F61395FC3295A5FDFE85AFC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		7F61395FC3295A5FDFE85AFC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		97426375F45B5C785A71A936 /* Pods-Napkin_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napkin_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Napkin_Tests/Pods-Napkin_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		ABAB3ED21B497B5D00B80538 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		ABAB3ED61B499C6A00B80538 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
-		ABAB3ED81B49A0DF00B80538 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		ABAB3ED61B499C6A00B80538 /* EventIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventIndex.swift; sourceTree = "<group>"; };
+		ABAB3ED81B49A0DF00B80538 /* EventEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEdit.swift; sourceTree = "<group>"; };
 		ABAF89F91B6044FA002B3252 /* SimpleArrayStoredModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleArrayStoredModel.swift; sourceTree = "<group>"; };
-		DF8F44D43506A48B37CFE09F /* Napkin.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Napkin.podspec; path = ../Napkin.podspec; sourceTree = "<group>"; };
+		DF8F44D43506A48B37CFE09F /* Napkin.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Napkin.podspec; path = ../../Napkin.podspec; sourceTree = "<group>"; };
 		F4D09957DC93D1F3C4174E35 /* Pods-Napkin_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napkin_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Napkin_Tests/Pods-Napkin_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,15 +86,50 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		371527261D980BFA00891047 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				ABAB3ED81B49A0DF00B80538 /* EventEdit.swift */,
+				ABAB3ED61B499C6A00B80538 /* EventIndex.swift */,
+				371527281D98285D00891047 /* EventShow.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		371527271D980C4300891047 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				371527261D980BFA00891047 /* Event */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3715272E1D984A0C00891047 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3715272F1D984B1000891047 /* Supporting Classes */,
+				ABAB3ED21B497B5D00B80538 /* Event.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3715272F1D984B1000891047 /* Supporting Classes */ = {
+			isa = PBXGroup;
+			children = (
+				ABAF89F91B6044FA002B3252 /* SimpleArrayStoredModel.swift */,
+			);
+			path = "Supporting Classes";
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for Napkin */,
-				607FACE81AFB9204008FA782 /* Tests */,
-				607FACD11AFB9204008FA782 /* Products */,
-				765ACBCFAF9BED18B2E208E1 /* Pods */,
 				1190334B1ACF0EA2D66EA2F6 /* Frameworks */,
+				765ACBCFAF9BED18B2E208E1 /* Pods */,
+				607FACF51AFB993E008FA782 /* Podspec Metadata */,
+				607FACD11AFB9204008FA782 /* Products */,
+				607FACE81AFB9204008FA782 /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,18 +145,15 @@
 		607FACD21AFB9204008FA782 /* Example for Napkin */ = {
 			isa = PBXGroup;
 			children = (
+				3715272E1D984A0C00891047 /* Models */,
+				607FACD31AFB9204008FA782 /* Supporting Files */,
+				371527271D980C4300891047 /* ViewControllers */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
-				607FACD31AFB9204008FA782 /* Supporting Files */,
-				ABAB3ED21B497B5D00B80538 /* Event.swift */,
-				ABAB3ED61B499C6A00B80538 /* EventTableViewController.swift */,
-				ABAB3ED81B49A0DF00B80538 /* EventViewController.swift */,
-				ABAF89F91B6044FA002B3252 /* SimpleArrayStoredModel.swift */,
+				607FACD91AFB9204008FA782 /* Main.storyboard */,
 			);
-			name = "Example for Napkin";
-			path = Napkin;
+			path = "Example for Napkin";
 			sourceTree = "<group>";
 		};
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
@@ -127,14 +161,14 @@
 			children = (
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				607FACEB1AFB9204008FA782 /* Tests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -144,17 +178,17 @@
 			children = (
 				607FACEA1AFB9204008FA782 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				2BD71B0926DB3B31C212BE1C /* LICENSE */,
 				DF8F44D43506A48B37CFE09F /* Napkin.podspec */,
 				7F61395FC3295A5FDFE85AFC /* README.md */,
-				2BD71B0926DB3B31C212BE1C /* LICENSE */,
 			);
-			name = "Podspec Metadata";
+			path = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
 		765ACBCFAF9BED18B2E208E1 /* Pods */ = {
@@ -175,12 +209,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Napkin_Example" */;
 			buildPhases = (
-				9D7120ACB2AE97141FF5D7D1 /* 📦 Check Pods Manifest.lock */,
+				9D7120ACB2AE97141FF5D7D1 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				1A148972E1DF2DF4ACE2236B /* 📦 Embed Pods Frameworks */,
-				FDECFCFBB9BC1B743A34EBF6 /* 📦 Copy Pods Resources */,
+				1A148972E1DF2DF4ACE2236B /* [CP] Embed Pods Frameworks */,
+				FDECFCFBB9BC1B743A34EBF6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,12 +229,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Napkin_Tests" */;
 			buildPhases = (
-				4C73495582EAA2F56FDCFCFC /* 📦 Check Pods Manifest.lock */,
+				4C73495582EAA2F56FDCFCFC /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				A34F1760ED119291676C85CF /* 📦 Embed Pods Frameworks */,
-				7D84A8A93B8375AB2F8F9023 /* 📦 Copy Pods Resources */,
+				A34F1760ED119291676C85CF /* [CP] Embed Pods Frameworks */,
+				7D84A8A93B8375AB2F8F9023 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,14 +305,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A148972E1DF2DF4ACE2236B /* 📦 Embed Pods Frameworks */ = {
+		1A148972E1DF2DF4ACE2236B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,14 +320,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Napkin_Example/Pods-Napkin_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4C73495582EAA2F56FDCFCFC /* 📦 Check Pods Manifest.lock */ = {
+		4C73495582EAA2F56FDCFCFC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,14 +335,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		7D84A8A93B8375AB2F8F9023 /* 📦 Copy Pods Resources */ = {
+		7D84A8A93B8375AB2F8F9023 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,14 +350,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Napkin_Tests/Pods-Napkin_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9D7120ACB2AE97141FF5D7D1 /* 📦 Check Pods Manifest.lock */ = {
+		9D7120ACB2AE97141FF5D7D1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,14 +365,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A34F1760ED119291676C85CF /* 📦 Embed Pods Frameworks */ = {
+		A34F1760ED119291676C85CF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,14 +380,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Napkin_Tests/Pods-Napkin_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FDECFCFBB9BC1B743A34EBF6 /* 📦 Copy Pods Resources */ = {
+		FDECFCFBB9BC1B743A34EBF6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,8 +404,9 @@
 			files = (
 				ABAF89FA1B6044FB002B3252 /* SimpleArrayStoredModel.swift in Sources */,
 				ABAB3ED31B497B5D00B80538 /* Event.swift in Sources */,
-				ABAB3ED91B49A0DF00B80538 /* EventViewController.swift in Sources */,
-				ABAB3ED71B499C6A00B80538 /* EventTableViewController.swift in Sources */,
+				ABAB3ED91B49A0DF00B80538 /* EventEdit.swift in Sources */,
+				371527291D98285D00891047 /* EventShow.swift in Sources */,
+				ABAB3ED71B499C6A00B80538 /* EventIndex.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +436,7 @@
 				607FACDA1AFB9204008FA782 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
@@ -409,6 +445,7 @@
 				607FACDF1AFB9204008FA782 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -450,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -488,7 +525,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -500,7 +537,7 @@
 			baseConfigurationReference = 66F73A59C1BCF2C73403996B /* Pods-Napkin_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Napkin/Info.plist;
+				INFOPLIST_FILE = "Example for Napkin/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -512,7 +549,7 @@
 			baseConfigurationReference = 2C8F322DBAF9C259B5A937FB /* Pods-Napkin_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Napkin/Info.plist;
+				INFOPLIST_FILE = "Example for Napkin/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -532,7 +569,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Napkin_Example.app/Napkin_Example";
@@ -548,7 +585,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Napkin_Example.app/Napkin_Example";

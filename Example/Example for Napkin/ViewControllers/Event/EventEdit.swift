@@ -2,12 +2,8 @@ import UIKit
 import Luncheon
 import Napkin
 
-class EventViewController: NapkinViewController {
+class EventEditViewController: EditViewController {
     var event = Event()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func saveWasTapped() {
         event.save {

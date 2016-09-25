@@ -1,10 +1,15 @@
 import UIKit
+import Placemat
 
-class EventTableViewController: UITableViewController {
+class EventIndexViewController: UITableViewController {
     var events = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = BlockBarButtonItem(barButtonSystemItem: .Add) {
+            let edit = EventEditViewController()
+            Navigation(viewController: self).show(edit, modally: true)
+        }
         loadEvents()
     }
     
@@ -17,8 +22,6 @@ class EventTableViewController: UITableViewController {
     func loadEvents() {
         events = Event.all() as! [Event]
     }
-    
-    // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
@@ -26,18 +29,17 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-        
-        cell.textLabel?.text = events[indexPath.row].title
-
+        cell.textLabel?.text = event(indexPath).title
         return cell
     }
-
-    // MARK: - Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let destination = segue.destinationViewController as? EventViewController {
-            destination.event = events[tableView.indexPathForSelectedRow!.row]
-        }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let show = EventShowViewController()
+        show.event = event(indexPath)
+        Navigation(viewController: self).show(show)
     }
-
+    
+    private func event(indexPath: NSIndexPath) -> Event {
+        return events[indexPath.row]
+    }
 }
