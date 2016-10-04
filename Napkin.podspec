@@ -27,5 +27,5 @@ Pod::Spec.new do |s|
 
   s.dependency 'Luncheon', '~> 0'
   s.dependency 'Eureka', '~> 1.7.0'
-  s.dependency 'Placemat', '~> 0.2.0'
+  s.dependency 'Placemat', '~> 0'
 end
