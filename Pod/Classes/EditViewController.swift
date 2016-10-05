@@ -101,8 +101,9 @@ public class EditViewController: FormViewController {
         let indexPath = NSIndexPath(forRow: self.currentSection!.endIndex, inSection: self.currentSection!.index!)
         
         if let custom = customView {
-            // TODO
             overrideHeight[indexPath] = custom.frame.height + (custom.frame.origin.y * 2)
+            
+            custom.autoresizingMask = UIViewAutoresizing.FlexibleWidth
             
             let row = LabelRow().cellSetup { cell, _ in cell.addSubview(custom) }
             
