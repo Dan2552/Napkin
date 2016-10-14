@@ -320,6 +320,7 @@ public class EditViewController: FormViewController {
     }
     
     public func valueFor(fieldName: String) -> AnyObject? {
+        guard subject().local.properties().contains(fieldName) else { return nil }
         return subject()?.valueForKey(fieldName)
     }
     
