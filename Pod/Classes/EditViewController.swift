@@ -87,7 +87,7 @@ public class EditViewController: FormViewController {
                        label: String = "",
                        detail: String? = nil,
                        customView: UIView? = nil,
-                       customAction: (()->())? = nil) {
+                       action: (()->())? = nil) {
         var label = label
         var detail = detail
         
@@ -132,7 +132,7 @@ public class EditViewController: FormViewController {
         }.cellUpdate { cell, _ in
             cell.detailTextLabel?.numberOfLines = 0
             cell.detailTextLabel?.textColor = UIColor.grayColor()
-            if customAction != nil {
+            if action != nil {
                 cell.accessoryType = .DisclosureIndicator
             }
             
@@ -142,7 +142,7 @@ public class EditViewController: FormViewController {
             overrideHeight[indexPath] = heightOfLabelCell(label, detail: detail)
         }
         
-        if let action = customAction {
+        if let action = action {
             row.onCellSelection { _, _ in action() }
         }
         
@@ -176,7 +176,7 @@ public class EditViewController: FormViewController {
                       type: InputType? = nil,
                       label: String = "",
                       detail: String? = nil,
-                      customAction: (()->())? = nil) {
+                      action: (()->())? = nil) {
         var type = type
         var label = label
         let modelField = !fieldName.isEmpty
@@ -191,7 +191,7 @@ public class EditViewController: FormViewController {
         }
 
         if type == nil {
-            type = inputTypeFor(fieldName, collection: collection, customAction: customAction)
+            type = inputTypeFor(fieldName, collection: collection, customAction: action)
         }
   
         var row: BaseRow
@@ -209,7 +209,7 @@ public class EditViewController: FormViewController {
             let pushRow = PushRow<String>()
             row = pushRow
             
-            if let action = customAction {
+            if let action = action {
                 let pushRow = CustomActionPushRow<String>()
                 row = pushRow
                 
