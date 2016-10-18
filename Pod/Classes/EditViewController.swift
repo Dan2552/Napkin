@@ -206,15 +206,15 @@ public class EditViewController: FormViewController {
                 passwordRow.value = value
             }
         case .Collection:
-            let pushRow = PushRow<String>()
+            var pushRow = PushRow<String>()
             row = pushRow
             
-            if let action = action {
-                let pushRow = CustomActionPushRow<String>()
-                row = pushRow
+            if let collection = collection {
+                if let action = action {
+                    pushRow = PushRow<String>().onChange { _ in action() }
+                    row = pushRow
+                }
                 
-                pushRow.onCellSelection { _, _ in action() }
-            } else if let collection = collection {
                 collections[fieldName] = collection
 
                 pushRow.options = collection.sort { $0.0 < $1.0 }.map { $1 }
@@ -222,6 +222,11 @@ public class EditViewController: FormViewController {
                     pushRow.value = collection.filter { $0.0 == modelValue }.first?.1
                 }
                 pushRow.value = pushRow.value ?? collection.first?.1
+            } else if let action = action {
+                let pushRow = CustomActionPushRow<String>()
+                row = pushRow
+                
+                pushRow.onCellSelection { _, _ in action() }
             }
         case .Switch:
             let switchRow = SwitchRow()

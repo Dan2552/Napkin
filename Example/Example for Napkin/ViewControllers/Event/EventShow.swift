@@ -30,7 +30,9 @@ class EventShowViewController: ShowViewController {
             6: "2 hours before",
             7: "1 day before",
             8: "2 days before"
-        ])
+        ]) {
+            self.setValuesToSubject()
+        }
         detail(label: "Edited by", detail: formattedEditedBy()) {
             Navigation(viewController: self).show(UIViewController())
         }
