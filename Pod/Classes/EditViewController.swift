@@ -21,7 +21,7 @@ public class EditViewController: FormViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    private func initializeForm() {
+    internal func initializeForm() {
         sectionSeparator()
         setupFields()
     }
