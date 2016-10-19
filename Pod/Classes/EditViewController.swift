@@ -225,7 +225,9 @@ public class EditViewController: FormViewController {
             } else if let action = action {
                 let pushRow = CustomActionPushRow<String>()
                 row = pushRow
-                
+                if let modelValue = modelValue as? String {
+                    pushRow.value = modelValue
+                }
                 pushRow.onCellSelection { _, _ in action() }
             }
         case .Switch:
