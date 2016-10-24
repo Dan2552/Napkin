@@ -54,12 +54,12 @@ class EventEditViewController: EditViewController {
         
         sectionSeparator()
         
-        input("URL", type: .URL)
-        input("notes", type: .Text)
+        input("URL", type: .url)
+        input("notes", type: .text)
 
         sectionSeparator()
 
-        input("secret", type: .Password)
+        input("secret", type: .password)
         input("number")
     }
 

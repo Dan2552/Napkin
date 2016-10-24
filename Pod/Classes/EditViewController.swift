@@ -2,14 +2,14 @@ import Luncheon
 import Eureka
 import Placemat
 
-public class EditViewController: FormViewController {
-    private var currentSection: Section?
-    private var collections = [String : [Int: String]]()
-    public var new: Bool = true
+open class EditViewController: FormViewController {
+    fileprivate var currentSection: Section?
+    fileprivate var collections = [String : [Int: String]]()
+    open var new: Bool = true
     
-    private var overrideHeight = [NSIndexPath: CGFloat]()
+    fileprivate var overrideHeight = [IndexPath: CGFloat]()
     
-    public required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    public required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -26,18 +26,18 @@ public class EditViewController: FormViewController {
         setupFields()
     }
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         if useDefaultEditModalButtons() && isModal {
             
             let verb = new ? "Add" : "Edit"
-            title = "\(verb) \(String.nameFor(subject()).titleize())"
+            title = "\(verb) \(String.nameFor(object: subject()).titleize())"
             
-            navigationItem.leftBarButtonItem = BlockBarButtonItem(barButtonSystemItem: .Cancel) {
+            navigationItem.leftBarButtonItem = BlockBarButtonItem(barButtonSystemItem: .cancel) {
                 self.cancelWasTapped()
             }
             
-            navigationItem.rightBarButtonItem = BlockBarButtonItem(barButtonSystemItem: .Save) {
+            navigationItem.rightBarButtonItem = BlockBarButtonItem(barButtonSystemItem: .save) {
                 self.setValuesToSubject()
                 self.saveWasTapped()
             }
@@ -45,23 +45,23 @@ public class EditViewController: FormViewController {
         initializeForm()
     }
 
-    public func useDefaultEditModalButtons() -> Bool {
+    open func useDefaultEditModalButtons() -> Bool {
         return true
     }
 
-    public func saveWasTapped() {
+    open func saveWasTapped() {
         Navigation(viewController: self).dismiss()
     }
     
-    public func cancelWasTapped() {
+    open func cancelWasTapped() {
         Navigation(viewController: self).dismiss()
     }
     
-    public func subject() -> Lunch! {
+    open func subject() -> Lunch! {
         return nil
     }
     
-    public func setupFields() {
+    open func setupFields() {
         
     }
     
@@ -69,41 +69,41 @@ public class EditViewController: FormViewController {
         return object_getClass(subject()) as AnyObject.Type
     }
 
-    private func propertyType(fieldName: String) -> PropertyType {
-        return ClassInspector.propertyTypes(subjectClass())[fieldName] ?? PropertyType.Other
+    fileprivate func propertyType(_ fieldName: String) -> PropertyType {
+        return ClassInspector.propertyTypes(subjectClass())[fieldName] ?? PropertyType.other
     }
     
-    public override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    open override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let override = overrideHeight[indexPath] {
             return override
         }
 
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
-    public func detail(fieldName: String = "",
-                       collection: [Int: String]? = nil,
+    open func detail(_ fieldName: String = "",
                        type: InputType? = nil,
                        label: String = "",
                        detail: String? = nil,
                        customView: UIView? = nil,
+                       collection: [Int: String]? = nil,
                        action: (()->())? = nil) {
         var label = label
         var detail = detail
         
         let modelField = !fieldName.isEmpty
         
-        var modelValue: AnyObject? = nil
+        var modelValue: Any? = nil
         if modelField {
-            modelValue = valueFor(fieldName)
+            modelValue = value(forField: fieldName)
         }
         
-        let indexPath = NSIndexPath(forRow: self.currentSection!.endIndex, inSection: self.currentSection!.index!)
+        let indexPath = IndexPath(row: currentSection!.endIndex, section: currentSection!.index!)
         
         if let custom = customView {
             overrideHeight[indexPath] = custom.frame.height + (custom.frame.origin.y * 2)
             
-            custom.autoresizingMask = UIViewAutoresizing.FlexibleWidth
+            custom.autoresizingMask = UIViewAutoresizing.flexibleWidth
             
             let row = LabelRow().cellSetup { cell, _ in cell.addSubview(custom) }
             
@@ -112,7 +112,7 @@ public class EditViewController: FormViewController {
         }
 
         if (detail ?? "").isEmpty {
-            if let value = valueFor(fieldName) {
+            if let value = value(forField: fieldName) {
                 detail = "\(value)"
             }
         }
@@ -122,18 +122,18 @@ public class EditViewController: FormViewController {
         }
         
         if label.isEmpty {
-            label = labelFor(fieldName)
+            label = self.label(forField: fieldName)
         }
 
         let row = LabelRow() {
             $0.title = label
             $0.value = detail
-            $0.cellStyle = .Subtitle
+            $0.cellStyle = .subtitle
         }.cellUpdate { cell, _ in
             cell.detailTextLabel?.numberOfLines = 0
-            cell.detailTextLabel?.textColor = UIColor.grayColor()
+            cell.detailTextLabel?.textColor = UIColor.gray
             if action != nil {
-                cell.accessoryType = .DisclosureIndicator
+                cell.accessoryType = .disclosureIndicator
             }
             
         }
@@ -149,8 +149,8 @@ public class EditViewController: FormViewController {
         currentSection?.append(row)
     }
     
-    private func heightOfLabelCell(label: String, detail: String) -> CGFloat {
-        let measure = LabelCell(style: .Subtitle, reuseIdentifier: nil)
+    fileprivate func heightOfLabelCell(_ label: String, detail: String) -> CGFloat {
+        let measure = LabelCell(style: .subtitle, reuseIdentifier: nil)
         measure.textLabel?.text = label
         measure.detailTextLabel?.text = detail
         let layoutMargins = measure.contentView.layoutMargins
@@ -163,31 +163,31 @@ public class EditViewController: FormViewController {
         return topMargin + labelHeight + detailHeight + bottomMargin
     }
     
-    private func heightOfLabel(label: UILabel, layoutMargins: UIEdgeInsets) -> CGFloat {
+    fileprivate func heightOfLabel(_ label: UILabel, layoutMargins: UIEdgeInsets) -> CGFloat {
         guard let text = label.text else { return 0 }
         
-        let size = CGSize(width: tableView!.frame.width - layoutMargins.left - layoutMargins.right, height: 1000)
-        let rect = text.boundingRectWithSize(size, options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: label.font], context: nil)
+        let size = CGSize(width: (tableView?.frame.width)! - layoutMargins.left - layoutMargins.right, height: 1000)
+        let rect = text.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: label.font], context: nil)
         return rect.size.height
     }
 
-    public func input(fieldName: String = "",
-                      collection: [Int: String]? = nil,
+    open func input(_ fieldName: String = "",
                       type: InputType? = nil,
                       label: String = "",
                       detail: String? = nil,
+                      collection: [Int: String]? = nil,
                       action: (()->())? = nil) {
         var type = type
         var label = label
         let modelField = !fieldName.isEmpty
         
-        var modelValue: AnyObject? = nil
+        var modelValue: Any? = nil
         if modelField {
-           modelValue = valueFor(fieldName)
+            modelValue = value(forField: fieldName)
         }
 
         if label.isEmpty {
-            label = labelFor(fieldName)
+            label = self.label(forField: fieldName)
         }
 
         if type == nil {
@@ -197,7 +197,7 @@ public class EditViewController: FormViewController {
         var row: BaseRow
 
         switch type! {
-        case .Password:
+        case .password:
             let passwordRow = PasswordRow()
             row = passwordRow
 
@@ -205,7 +205,7 @@ public class EditViewController: FormViewController {
             if let value = modelValue as? String {
                 passwordRow.value = value
             }
-        case .Collection:
+        case .collection:
             var pushRow = PushRow<String>()
             row = pushRow
             
@@ -217,7 +217,7 @@ public class EditViewController: FormViewController {
                 
                 collections[fieldName] = collection
 
-                pushRow.options = collection.sort { $0.0 < $1.0 }.map { $1 }
+                pushRow.options = collection.sorted { $0.0 < $1.0 }.map { $1 }
                 if let modelValue = modelValue as? Int {
                     pushRow.value = collection.filter { $0.0 == modelValue }.first?.1
                 }
@@ -230,29 +230,29 @@ public class EditViewController: FormViewController {
                 }
                 pushRow.onCellSelection { _, _ in action() }
             }
-        case .Switch:
+        case .switch:
             let switchRow = SwitchRow()
             row = switchRow
             if let value = modelValue as? Bool {
                 switchRow.value = value
             }
-        case .DateInLine:
+        case .dateInLine:
             let dateInLineRow = DateTimeInlineRow()
             row = dateInLineRow
 
-            if let value = modelValue as? NSDate {
+            if let value = modelValue as? Date {
                 dateInLineRow.value = value
             }
-        case .URL:
+        case .url:
             let urlRow = URLRow()
             row = urlRow
 
             urlRow.placeholder = label
 
             if let value = modelValue as? String {
-                urlRow.value = NSURL(string: value)
+                urlRow.value = URL(string: value)
             }
-        case .Text:
+        case .text:
             let textAreaRow = TextAreaRow()
             row = textAreaRow
 
@@ -261,7 +261,7 @@ public class EditViewController: FormViewController {
             if let value = modelValue as? String {
                 textAreaRow.value = value
             }
-        case .Int:
+        case .int:
             let numberRow = IntRow()
             row = numberRow
 
@@ -292,70 +292,70 @@ public class EditViewController: FormViewController {
         currentSection?.append(row)
     }
 
-    public func sectionSeparator(header: String = "", footer: String = "") {
+    open func sectionSeparator(_ header: String = "", footer: String = "") {
         currentSection = Section(header: header, footer: footer)
         form +++ currentSection!
     }
     
-    public func button(title: String, action: ()->()) {
+    open func button(_ title: String, action: @escaping ()->()) {
         let button = ButtonRow(title)
         button.title = title
         button.onCellSelection { _, _ in action() }
         currentSection?.append(button)
     }
     
-    public func setValuesToSubject() {
+    open func setValuesToSubject() {
         for (fieldName, value) in form.values() {
             guard var v = value as? AnyObject? else { continue }
 
             if let collection = collections[fieldName] {
-                v = collection.filter { $1 == (v as! String) }.first?.0
+                v = collection.filter { $1 == (v as! String) }.first?.0 as AnyObject?
             }
 
             subject()?.local.assignAttribute(fieldName, withValue: v)
         }
     }
     
-    private func isStringAlike(type: InputType?) -> Bool {
+    fileprivate func isStringAlike(_ type: InputType?) -> Bool {
         guard let type = type else { return false }
         
-        return type == .String
-            || type == .URL
-            || type == .Email
-            || type == .Password
-            || type == .Text
+        return type == .string
+            || type == .url
+            || type == .email
+            || type == .password
+            || type == .text
     }
     
-    public func valueFor(fieldName: String) -> AnyObject? {
+    open func value(forField fieldName: String) -> Any? {
         guard subject().local.properties().contains(fieldName) else { return nil }
-        return subject()?.valueForKey(fieldName)
+        return subject()?.value(forKey: fieldName)
     }
     
-    public func labelFor(fieldName: String) -> String {
-        return fieldName.underscoreCase().titleize()
+    open func label(forField fieldName: String) -> String {
+        return fieldName.underscoreCased().titleize()
     }
     
-    private func inputTypeFor(fieldName: String, collection: [Int: String]? = nil, customAction: (()->())? = nil) -> InputType {
+    fileprivate func inputTypeFor(_ fieldName: String, collection: [Int: String]? = nil, customAction: (()->())? = nil) -> InputType {
         let type: InputType
         let fieldType = propertyType(fieldName)
         if collection != nil || customAction != nil {
-            type = .Collection
+            type = .collection
         } else {
             switch fieldType {
-            case .Date:
-                type = .DateInLine
-            case .Bool:
-                type = .Switch
-            case .Int:
-                type = .Int
+            case .date:
+                type = .dateInLine
+            case .bool:
+                type = .switch
+            case .int:
+                type = .int
             default:
-                type = .String
+                type = .string
             }
         }
         return type
     }
     
-    public func reload() {
+    open func reload() {
         UIView.setAnimationsEnabled(false)
         form.removeAll()
         initializeForm()

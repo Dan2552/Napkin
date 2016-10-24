@@ -14,7 +14,7 @@ class EventShowViewController: ShowViewController {
         let edit = EventEditViewController()
         edit.event = event
         edit.new = false
-        Navigation(viewController: self).show(edit, modally: true)
+        Navigation(viewController: self).show(target: edit, modally: true)
     }
     
     override func setupFields() {
@@ -34,13 +34,13 @@ class EventShowViewController: ShowViewController {
             self.setValuesToSubject()
         }
         detail(label: "Edited by", detail: formattedEditedBy()) {
-            Navigation(viewController: self).show(UIViewController())
+            Navigation(viewController: self).show(target: UIViewController())
         }
         detail("URL")
-        detail("notes", type: .Text)
+        detail("notes", type: .text)
     }
     
-    private func eventDescription() -> String {
+    fileprivate func eventDescription() -> String {
         var description = formattedEventDateAndTime()
         if !event.location.isEmpty {
             description = "\(event.location)\n\n\(description)"
@@ -48,42 +48,42 @@ class EventShowViewController: ShowViewController {
         return description
     }
     
-    private func formattedEventDateAndTime() -> String {
+    fileprivate func formattedEventDateAndTime() -> String {
         return "\(formattedDate())\n\(formattedTimes())"
     }
     
-    private func formattedDate() -> String {
-        let date = valueFor("starts") as! NSDate
+    fileprivate func formattedDate() -> String {
+        let date = value(forField: "starts") as! Date
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, d MMM yyyy"
-        let formatted = formatter.stringFromDate(date)
+        let formatted = formatter.string(from: date)
         return "\(formatted)"
     }
     
-    private func formattedTimes() -> String {
-        let starts = valueFor("starts") as! NSDate
-        let ends = valueFor("ends") as! NSDate
+    fileprivate func formattedTimes() -> String {
+        let starts = value(forField: "starts") as! Date
+        let ends = value(forField: "ends") as! Date
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         
-        let formattedStart = formatter.stringFromDate(starts)
-        let formattedEnd = formatter.stringFromDate(ends)
+        let formattedStart = formatter.string(from: starts)
+        let formattedEnd = formatter.string(from: ends)
         
         return "from \(formattedStart) to \(formattedEnd)"
     }
     
-    private func customViewExample() -> UIView {
+    fileprivate func customViewExample() -> UIView {
         let custom = UIView(frame: CGRect(x: 8, y: 8, width: 304, height: 150))
-        custom.backgroundColor = UIColor.redColor()
+        custom.backgroundColor = UIColor.red
         return custom
     }
     
-    private func formattedEditedBy() -> String {
-        let formatter = NSDateFormatter()
+    fileprivate func formattedEditedBy() -> String {
+        let formatter = DateFormatter()
         formatter.dateFormat = "E d MMM, HH:mm"
-        let formattedUpdatedAt = formatter.stringFromDate(event.updatedAt)
+        let formattedUpdatedAt = formatter.string(from: event.updatedAt as Date)
         return "\(event.author)\n\(formattedUpdatedAt)"
     }
 }

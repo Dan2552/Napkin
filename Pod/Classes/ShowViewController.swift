@@ -10,18 +10,18 @@ import UIKit
 import Luncheon
 import Placemat
 
-public class ShowViewController: EditViewController {
-    override public func subject() -> Lunch! {
+open class ShowViewController: EditViewController {
+    override open func subject() -> Lunch! {
         return nil
     }
     
-    public override func viewDidLoad() {
-        tableView = setupTableView(style: .Plain)
+    open override func viewDidLoad() {
+        tableView = setupTableView(style: .plain)
         super.viewDidLoad()
         
-        title = "\(String.nameFor(subject()).titleize()) Details"
+        title = "\(String.nameFor(object: subject()).titleize()) Details"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .Edit,
+            barButtonSystemItem: .edit,
             target: self,
             action: #selector(editWasTapped)
         )
@@ -29,16 +29,16 @@ public class ShowViewController: EditViewController {
         tableView?.tableFooterView = UIView()
     }
     
-    override public func viewDidAppear(animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         reload()
         super.viewDidAppear(animated)
     }
     
-    override public func useDefaultEditModalButtons() -> Bool {
+    override open func useDefaultEditModalButtons() -> Bool {
         return false
     }
 
-    public func editWasTapped() {
+    open func editWasTapped() {
         
     }
 }

@@ -1,11 +1,11 @@
 public enum InputType {
-    case String
-    case Text
-    case URL
-    case Password
-    case DateInLine
-    case Switch
-    case Int
-    case Collection
-    case Email
+    case string
+    case text
+    case url
+    case password
+    case dateInLine
+    case `switch`
+    case int
+    case collection
+    case email
 }
