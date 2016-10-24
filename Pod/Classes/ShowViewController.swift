@@ -34,13 +34,6 @@ public class ShowViewController: EditViewController {
         super.viewDidAppear(animated)
     }
     
-    func reload() {
-        UIView.setAnimationsEnabled(false)
-        form.removeAll()
-        initializeForm()
-        UIView.setAnimationsEnabled(true)
-    }
-    
     override public func useDefaultEditModalButtons() -> Bool {
         return false
     }

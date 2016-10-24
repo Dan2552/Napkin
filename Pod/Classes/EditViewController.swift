@@ -354,4 +354,11 @@ public class EditViewController: FormViewController {
         }
         return type
     }
+    
+    public func reload() {
+        UIView.setAnimationsEnabled(false)
+        form.removeAll()
+        initializeForm()
+        UIView.setAnimationsEnabled(true)
+    }
 }
