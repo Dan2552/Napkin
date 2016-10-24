@@ -3,10 +3,6 @@ use_frameworks!
 
 target 'Napkin_Example' do
   pod "Napkin", :path => "../"
-
-  pod "Luncheon", path: "/Users/dan/projects/Luncheon"
-  pod "Placemat", path: "/Users/dan/projects/Placemat"
-  # git: "https://github.com/Dan2552/Luncheon.git", branch: "master"
 end
 
 target 'Napkin_Tests' do

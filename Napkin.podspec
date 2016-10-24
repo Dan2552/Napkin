@@ -1,21 +1,12 @@
-#
-# Be sure to run `pod lib lint Napkin.podspec' to ensure this is a
-# valid spec and remove all comments before submitting the spec.
-#
-# Any lines starting with a # are optional, but encouraged
-#
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = "Napkin"
-  s.version          = "0.3.0"
-  s.summary          = "Form builder that works seamlessly with Luncheon."
+  s.version          = "0.5.0-swift-3"
+  s.summary          = "Resource based iOS screen builder. With ability to automatically infer input types using proprerties defined in your Luncheon models."
   s.homepage         = "https://github.com/Dan2552/Napkin"
   s.license          = 'MIT'
-  s.author           = { "Daniel Green" => "dan2552@gmail.com" }
+  s.author           = { "Daniel Inkpen" => "dan2552@gmail.com" }
   s.source           = { :git => "https://github.com/Dan2552/Napkin.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/Dan2552'
+  s.social_media_url = 'https://twitter.com/Dan2552'
 
   s.platform     = :ios, '9.0'
   s.requires_arc = true
@@ -25,7 +16,7 @@ Pod::Spec.new do |s|
     'Napkin' => ['Pod/Assets/*.png']
   }
 
-  s.dependency 'Luncheon', '~> 0'
   s.dependency 'Eureka', '~> 2.0.0-beta.1'
-  s.dependency 'Placemat', '~> 0'
+  s.dependency 'Luncheon', '~> 0.5.0-swift-3'
+  s.dependency 'Placemat', '~> 0.5.0-swift-3'
 end

@@ -1,6 +1,6 @@
 # Napkin
 
-[![CI Status](http://img.shields.io/travis/Daniel Green/Napkin.svg?style=flat)](https://travis-ci.org/Daniel Green/Napkin)
+[![CI Status](http://img.shields.io/travis/Dan2552/Napkin.svg?style=flat)](https://travis-ci.org/Dan2552/Napkin)
 [![Version](https://img.shields.io/cocoapods/v/Napkin.svg?style=flat)](http://cocoapods.org/pods/Napkin)
 [![License](https://img.shields.io/cocoapods/l/Napkin.svg?style=flat)](http://cocoapods.org/pods/Napkin)
 [![Platform](https://img.shields.io/cocoapods/p/Napkin.svg?style=flat)](http://cocoapods.org/pods/Napkin)
@@ -22,7 +22,7 @@ pod "Napkin"
 
 ## Author
 
-Daniel Green, dan2552@gmail.com
+Daniel Inkpen, dan2552@gmail.com
 
 ## License
 
