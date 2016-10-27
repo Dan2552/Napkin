@@ -230,6 +230,8 @@ open class EditViewController: FormViewController {
                 }
                 pushRow.onCellSelection { _, _ in action() }
             }
+            
+            pushRow.onPresent { form, selectorController in selectorController.enableDeselection = false }
         case .switch:
             let switchRow = SwitchRow()
             row = switchRow
