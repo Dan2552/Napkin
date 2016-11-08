@@ -299,9 +299,12 @@ open class EditViewController: FormViewController {
         form +++ currentSection!
     }
     
-    open func button(_ title: String, action: @escaping ()->()) {
+    open func button(_ title: String, textColor: UIColor? = nil, action: @escaping ()->()) {
         let button = ButtonRow(title)
         button.title = title
+        if let textColor = textColor {
+            button.cellUpdate { cell, _ in cell.textLabel?.textColor = textColor }
+        }
         button.onCellSelection { _, _ in action() }
         currentSection?.append(button)
     }
