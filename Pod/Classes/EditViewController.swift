@@ -294,7 +294,7 @@ open class EditViewController: FormViewController {
         currentSection?.append(row)
     }
 
-    open func sectionSeparator(_ header: String = "", footer: String = "") {
+    open func sectionSeparator(header: String = "", footer: String = "") {
         currentSection = Section(header: header, footer: footer)
         form +++ currentSection!
     }
