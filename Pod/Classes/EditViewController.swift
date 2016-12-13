@@ -309,15 +309,20 @@ open class EditViewController: FormViewController {
         currentSection?.append(button)
     }
     
+    open func setValueToSubject(fieldName: String, value: Any?) {
+        var value = value
+        
+        if let collection = collections[fieldName] {
+            value = collection.filter { $1 == (value as! String) }.first?.0 as Any?
+        }
+        
+        subject()?.local.assignAttribute(fieldName, withValue: value)
+    }
+    
     open func setValuesToSubject() {
         for (fieldName, value) in form.values() {
-            guard var v = value as? AnyObject? else { continue }
-
-            if let collection = collections[fieldName] {
-                v = collection.filter { $1 == (v as! String) }.first?.0 as AnyObject?
-            }
-
-            subject()?.local.assignAttribute(fieldName, withValue: v)
+            guard var value = value as? Any? else { continue }
+            setValueToSubject(fieldName: fieldName, value: value)
         }
     }
     
