@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Napkin"
-  s.version          = "0.5.0-swift-3"
+  s.version          = "0.6.0"
   s.summary          = "Resource based iOS screen builder. With ability to automatically infer input types using proprerties defined in your Luncheon models."
   s.homepage         = "https://github.com/Dan2552/Napkin"
   s.license          = 'MIT'
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
     'Napkin' => ['Pod/Assets/*.png']
   }
 
-  s.dependency 'Eureka', '~> 2.0.0-beta.1'
-  s.dependency 'Luncheon', '~> 0.5.0-swift-3'
-  s.dependency 'Placemat', '~> 0.5.0-swift-3'
+  s.dependency 'Eureka', '~> 2.0'
+  s.dependency 'Luncheon', '>= 0.6.0'
+  s.dependency 'Placemat', '>= 0.6.0'
 end
