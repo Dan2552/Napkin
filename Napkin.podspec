@@ -12,9 +12,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'Napkin' => ['Pod/Assets/*.png']
-  }
 
   s.dependency 'Eureka', '~> 3.0.0'
   s.dependency 'Luncheon', '>= 0.6.0'
