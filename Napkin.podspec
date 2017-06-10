@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Napkin"
-  s.version          = "0.6.0"
+  s.version          = "0.7.0"
   s.summary          = "Resource based iOS screen builder. With ability to automatically infer input types using proprerties defined in your Luncheon models."
   s.homepage         = "https://github.com/Dan2552/Napkin"
   s.license          = 'MIT'
