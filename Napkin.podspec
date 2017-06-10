@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
     'Napkin' => ['Pod/Assets/*.png']
   }
 
-  s.dependency 'Eureka', '~> 2.0'
+  s.dependency 'Eureka', '~> 3.0.0'
   s.dependency 'Luncheon', '>= 0.6.0'
-  s.dependency 'Placemat', '>= 0.6.0'
+  s.dependency 'Placemat', '>= 0.7.1'
 end
